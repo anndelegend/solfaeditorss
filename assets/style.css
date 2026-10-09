@@ -383,3 +383,46 @@ header .cart-count{
   .mobile-header-actions{gap:7px !important}
   .mobile-cart-link,.mobile-menu-toggle{width:38px !important;height:38px !important;min-width:38px !important}
 }
+
+/* MOBILE HEADER STRUCTURE FIX: logo left, controls right */
+@media(max-width:900px){
+  header > .wrap.nav,
+  header .wrap.nav{
+    display:flex !important;
+    align-items:center !important;
+    justify-content:space-between !important;
+    width:min(1180px,92%) !important;
+    height:68px !important;
+    min-height:68px !important;
+    margin:0 auto !important;
+    padding:0 !important;
+  }
+  header .wrap.nav > a[aria-label="Solfa Editors"]{
+    display:flex !important;
+    align-items:center !important;
+    justify-content:flex-start !important;
+    flex:0 0 auto !important;
+  }
+  header .wrap.nav > a[aria-label="Solfa Editors"] .logo-img{
+    display:block !important;
+    width:108px !important;
+    max-width:108px !important;
+    max-height:52px !important;
+    height:auto !important;
+    object-fit:contain !important;
+  }
+  header .wrap.nav > nav,
+  header .wrap.nav > .actions{
+    display:none !important;
+  }
+  header > .mobile-header-actions{
+    position:absolute !important;
+    right:4% !important;
+    top:0 !important;
+    height:68px !important;
+    display:flex !important;
+    align-items:center !important;
+    gap:9px !important;
+    margin:0 !important;
+  }
+}
