@@ -58,3 +58,36 @@ function addCurrentScoreToCart(){
  const id=new URLSearchParams(location.search).get('id')||'ave-maria';
  addToCart(id);
 }
+
+function setupMobileNav(){
+ const btn=document.querySelector('.mobile-menu-toggle');
+ if(!btn)return;
+ let panel=document.querySelector('.mobile-nav-panel');
+ if(!panel){
+   panel=document.createElement('div');
+   panel.className='mobile-nav-panel';
+   panel.innerHTML=`
+    <a href="index.html">Home <span>›</span></a>
+    <a href="catalogue.html">Scores <span>›</span></a>
+    <a href="composers.html">Composers <span>›</span></a>
+    <a href="catalogue.html">Collections <span>›</span></a>
+    <a href="convert.html">Convert to Solfa <span>›</span></a>
+    <a href="transcription.html">Transcription <span>›</span></a>
+    <a href="membership.html">Membership <span>›</span></a>
+    <a href="learn.html">Learn <span>›</span></a>
+    <a href="about.html">About <span>›</span></a>
+    <div class="mobile-account-actions">
+      <a href="login.html">Log in</a>
+      <a href="signup.html">Create Account</a>
+    </div>`;
+   document.body.appendChild(panel);
+ }
+ btn.addEventListener('click',()=>{
+   const open=document.body.classList.toggle('mobile-menu-open');
+   btn.setAttribute('aria-expanded',String(open));
+   btn.setAttribute('aria-label',open?'Close menu':'Open menu');
+ });
+ panel.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>document.body.classList.remove('mobile-menu-open')));
+ updateCartCount();
+}
+document.addEventListener('DOMContentLoaded',setupMobileNav);
